@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series de TV</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Catálogo de Series de TV</h1>
+        
+        <!-- Tabla de series -->
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Canal</th>
+                    <th>Temporadas</th>
+                </tr>
+            </thead>
+            <tbody id="series">
+                <!-- Aquí se cargarán las series -->
+            </tbody>
+            <p><strong>Promedio de temporadas:</strong> <span id="average-seasons">0</span></p>
+        </table>
+        
+    </div>
+
+    <!-- Cargar el script -->
+    <script type="module" src="./scripts/series.js"></script>
+    <script type="module" src="./scripts/data.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
+</body>
+</html>
