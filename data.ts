@@ -1,4 +1,5 @@
-import { Serie } from './series.js';
+import { Serie } from './series.js'; // Debe coincidir con el nombre del archivo compilado
+
 export const series: Serie[] = [
     new Serie(1, "Breaking Bad", "AMC", 5),
     new Serie(2, "Orange Is the New Black", "Netflix", 6),
