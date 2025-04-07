@@ -1,10 +1,9 @@
-var Serie = /** @class */ (function () {
-    function Serie(id, nombre, canal, temporadas, descripcion, url, imagen) {
+// Definición de la clase Serie
+class Serie {
+    constructor(id, nombre, canal, temporadas) {
         this.id = id;
         this.nombre = nombre;
         this.canal = canal;
-        this.temporadas = temporadas
+        this.temporadas = temporadas;
     }
-    return Serie;
-}());
-export { Serie };
+}

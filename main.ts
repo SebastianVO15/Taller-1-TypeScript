@@ -1,10 +1,10 @@
 import { series } from "./data.js";
 import { Serie } from "./series.js";
 
-const tableBody = document.getElementById("series") as HTMLTableSectionElement;
-const averageElement = document.getElementById("average-seasons") as HTMLSpanElement;
+document.addEventListener("DOMContentLoaded", () => {
+    const tableBody = document.getElementById("series") as HTMLTableSectionElement;
+    const averageElement = document.getElementById("average-seasons") as HTMLSpanElement;
 
-function mostrarSeries(): void {
     // Limpiar tabla
     tableBody.innerHTML = '';
     
@@ -19,14 +19,9 @@ function mostrarSeries(): void {
         `;
         tableBody.appendChild(fila);
     });
-
+    
     // Calcular y mostrar promedio
-    const promedio = calcularPromedioTemporadas();
+    const totalTemporadas = series.reduce((sum, serie) => sum + serie.temporadas, 0);
+    const promedio = totalTemporadas / series.length;
     averageElement.textContent = promedio.toFixed(2);
-}
-
-function calcularPromedioTemporadas(): number {
-    return series.reduce((sum, serie) => sum + serie.temporadas, 0) / series.length;
-}
-
-document.addEventListener("DOMContentLoaded", mostrarSeries);
+});

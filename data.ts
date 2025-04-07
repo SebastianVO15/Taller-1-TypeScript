@@ -1,4 +1,4 @@
-import { Serie } from './series.js'; // Debe coincidir con el nombre del archivo compilado
+import { Serie } from './series.js'; // Importante: usamos serie.js aunque el archivo original es .ts
 
 export const series: Serie[] = [
     new Serie(1, "Breaking Bad", "AMC", 5),
