@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series de TV</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Fondo con gradiente colorido */
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        /* Contenedor principal con sombra */
+        .main-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border: 2px solid #5e72e4;
+        }
+        
+        /* Encabezado con estilo colorido */
+        .header-title {
+            color: #5e72e4;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #5e72e4;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Tabla colorida */
+        .series-table {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .series-table thead {
+            background: linear-gradient(45deg, #5e72e4, #825ee4);
+            color: white;
+        }
+        
+        .series-table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: none !important;
+        }
+        
+        .series-table tbody tr:nth-child(odd) {
+            background-color: #eef1ff;
+        }
+        
+        .series-table tbody tr:nth-child(even) {
+            background-color: #f8f9fe;
+        }
+        
+        .series-table tbody tr:hover {
+            background-color: #d7dcff;
+            cursor: pointer;
+            transform: translateY(-2px);
+            transition: all 0.2s;
+        }
+        
+        .series-table td {
+            border-color: #e8eafc;
+        }
+        
+        /* Estadísticas con estilo colorido */
+        .stats-container {
+            background: linear-gradient(to right, #5e72e4, #825ee4);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(94, 114, 228, 0.3);
+        }
+        
+        .stats-title {
+            color: white;
+            margin-bottom: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats-value {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Card de detalle */
+        .detail-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .detail-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .detail-card .card-body {
+            background: linear-gradient(to bottom, #f8f9fe, #eef1ff);
+        }
+        
+        .detail-card .card-title {
+            color: #5e72e4;
+            font-weight: 700;
+            border-bottom: 2px solid #5e72e4;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .detail-card .badge {
+            font-size: 0.9em;
+            padding: 8px 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        /* Para la fila seleccionada */
+        .selected-row {
+            background-color: #5e72e4 !important;
+            color: white;
+        }
+        
+        /* Responsive ajustes */
+        @media (max-width: 992px) {
+            .detail-area {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-container animated">
+            <h1 class="text-center header-title">Catálogo de Series de TV</h1>
+            
+            <div class="row">
+                <!-- Columna con tabla de series -->
+                <div class="col-lg-6">
+                    <!-- Tabla de series -->
+                    <table class="table series-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Canal</th>
+                                <th>Temporadas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="series">
+                            <!-- El contenido se cargará dinámicamente con JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    <!-- Estadísticas -->
+                    <div class="stats-container">
+                        <p class="stats-title"><strong>Promedio de temporadas:</strong> <span id="average-seasons" class="stats-value">0</span></p>
+                    </div>
+                </div>
+                
+                <!-- Columna para mostrar detalles -->
+                <div class="col-lg-6 detail-area">
+                    <div class="card detail-card" id="serie-detail">
+                        <img src="/api/placeholder/800/400" class="card-img-top" alt="Serie" id="serie-image">
+                        <div class="card-body">
+                            <h5 class="card-title" id="serie-title">Selecciona una serie</h5>
+                            <div id="serie-badges" class="mb-3">
+                                <!-- Badges se cargarán dinámicamente -->
+                            </div>
+                            <p class="card-text" id="serie-description">Haz clic en cualquier serie de la tabla para ver su información detallada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts en JavaScript -->
+    <script src="./scripts/series.js"></script>
+    <script src="./scripts/data.js"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+</html>
